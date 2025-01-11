@@ -29,6 +29,25 @@ export const getBlogById = async (req, res) => {
     }
 };
 
+// Fetch a single blog by slug
+export const getBlogBySlug = async (req, res) => {
+    console.log("hello")
+    try {
+        const { slug } = req.params;  // Get the slug from the request params
+        console.log("slug:", slug)
+        const blog = await Blog.findOne({ slug });  // Find the blog by the slug field
+
+        if (!blog) return res.status(404).json({ message: "Blog not found" });
+        
+        res.status(200).json(blog);  // Send the found blog as a response
+    } catch (error) {
+        res.status(500).json({
+            message: "Failed to fetch the blog by slug",
+            error: error.message,
+        });
+    }
+};
+
 // Create a new blog
 export const createBlog = async (req, res) => {
     try {

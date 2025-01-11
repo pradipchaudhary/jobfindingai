@@ -23,11 +23,7 @@ const blogSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        slug: {
-            type: String,
-            required: true,
-            unique: true,
-        },
+        slug: { type: String, required: true, unique: true }, // Ensure the slug field is unique
         thumbnail: {
             type: String,
             required: true,

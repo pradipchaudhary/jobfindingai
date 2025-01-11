@@ -4,6 +4,7 @@ import connectDB from "./config/connectDB.js";
 import blogRouter from "./routes/BlogRouter.js";
 import projectRoutes from "./routes/projectRoutes.js";
 import cors from "cors"
+import { getBlogBySlug } from "./controllers/BlogController.js";
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ connectDB();
 // Routes
 app.use("/api/blogs", blogRouter); // Use the blog router
 app.use("/api/projects", projectRoutes);
+app.get('/api/blogs/slug/:slug', getBlogBySlug);  // Match the slug in the route params
 
 // Error handling for unmatched routes
 app.use((req, res) => {

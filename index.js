@@ -3,14 +3,20 @@ import dotenv from "dotenv";
 import connectDB from "./config/connectDB.js";
 import blogRouter from "./routes/BlogRouter.js";
 import projectRoutes from "./routes/projectRoutes.js";
+import cors from "cors"
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+
 // Middleware
 app.use(express.json()); // Parse JSON request bodies
+app.use(cors({
+    origin: '*',
+}));
+
 
 // Connect to the database
 connectDB();

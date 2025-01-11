@@ -15,5 +15,5 @@ router.get("/:id", getBlogById);
 router.post("/", createBlog);
 router.put("/:id", updateBlog);
 router.delete("/:id", deleteBlog);
-router.get('/:slug', getBlogBySlug);
+router.get('/slug/:slug', getBlogBySlug);
 export default router;

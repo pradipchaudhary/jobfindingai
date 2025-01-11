@@ -24,14 +24,25 @@ const getProjects = async (req, res) => {
 // Get a single project by slug
 const getProjectBySlug = async (req, res) => {
     try {
-        const project = await Project.findOne({ slug: req.params.slug });
-        if (!project) {
-            res.status(404).json({ message: "Project not found" });
-            return;
+        const { slug } = req.params;
+        if (typeof slug !== 'string') {
+            console.error("Slug is not a string:", slug);
+            return res.status(400).json({ message: "Invalid slug format" });
         }
-        res.status(200).json(project);
+
+        console.log("Fetching project with slug:", slug);
+
+        const project = await Project.findOne({ slug });
+
+        if (!project) {
+            console.log("No project found for slug:", slug);
+            return res.status(404).json({ message: "Project not found" });
+        }
+
+        res.status(200).json(project);  // Respond with the found project
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        console.error("Error in fetching project:", error.message);
+        res.status(500).json({ message: "Server error", error: error.message });
     }
 };
 

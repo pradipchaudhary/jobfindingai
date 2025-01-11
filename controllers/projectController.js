@@ -12,6 +12,7 @@ const createProject = async (req, res) => {
 
 // Get all projects
 const getProjects = async (req, res) => {
+  
     try {
         const projects = await Project.find();
         res.status(200).json(projects);

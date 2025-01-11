@@ -25,7 +25,7 @@ connectDB();
 // Routes
 app.use("/api/blogs", blogRouter); // Use the blog router
 app.use("/api/projects", projectRoutes);
-app.get('/api/blogs/slug/:slug', getBlogBySlug);  // Match the slug in the route params
+
 
 // Error handling for unmatched routes
 app.use((req, res) => {

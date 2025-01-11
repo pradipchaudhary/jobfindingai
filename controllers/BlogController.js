@@ -31,7 +31,6 @@ export const getBlogById = async (req, res) => {
 
 // Fetch a single blog by slug
 export const getBlogBySlug = async (req, res) => {
-    console.log("hello")
     try {
         const { slug } = req.params;  // Get the slug from the request params
         console.log("slug:", slug)

@@ -3,7 +3,7 @@ import express from "express";
 import {
     createProject,
     getProjects,
-    getProjectBySlug, // Ensure this is imported
+    getProjectBySlug,
     updateProject,
     deleteProject,
 } from "../controllers/projectController.js";
@@ -16,8 +16,8 @@ router.post("/", createProject);
 // Route to get all projects
 router.get("/", getProjects);
 
-// Route to get a project by slug
-router.get("/slug/:slug", getProjectBySlug);  // Add this route for fetching by slug
+// Route to get a single project by slug
+router.get("/:slug", getProjectBySlug);
 
 // Route to update a project by id
 router.put("/:id", updateProject);

@@ -16,6 +16,7 @@ router.post("/", createProject);
 // Route to get all projects
 router.get("/", getProjects);
 
+// router.get("/:id", getProjectById)
 // Route to get a single project by slug
 router.get("/:slug", getProjectBySlug);
 

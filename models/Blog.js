@@ -1,48 +1,50 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-const blogSchema = new mongoose.Schema(
-    {
-        id: {
-            type: String,
-            required: true,
-            unique: true,
-        },
-        title: {
-            type: String,
-            required: true,
-        },
-        excerpt: {
-            type: String,
-            required: true,
-        },
-        date: {
-            type: Date,
-            required: true,
-        },
-        readTime: {
-            type: String,
-            required: true,
-        },
-        slug: { type: String, required: true, unique: true }, // Ensure the slug field is unique
-        thumbnail: {
-            type: String,
-            required: true,
-        },
-        category: {
-            type: String,
-            required: true,
-        },
-        content: {
-            type: String,
-            required: true,
-        },
+const blogSchema = new mongoose.Schema({
+    id: {
+        type: Number,
+        required: true,
+        unique: true,
     },
-    {
-        timestamps: true, // Automatically manage `createdAt` and `updatedAt` fields
-    }
-);
+    title: {
+        type: String,
+        required: true,
+    },
+    excerpt: {
+        type: String,
+        required: true,
+    },
+    readTime: {
+        type: String,
+        required: true,
+    },
+    slug: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+    thumbnail: {
+        type: String,
+        required: true,
+    },
+    category: {
+        type: String,
+        required: true,
+    },
+    content: {
+        type: String,
+        required: true,
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+    },
+    updatedAt: {
+        type: Date,
+        default: Date.now,
+    },
+});
 
-// Create the model
-const Blog = mongoose.model("Blog", blogSchema);
+const Blog = mongoose.model('Blog', blogSchema);
 
 export default Blog;

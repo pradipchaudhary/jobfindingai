@@ -1,4 +1,5 @@
 import Project from "../models/Project.js"; // Correct path with file extension
+import { createBlog } from "./BlogController.js";
 // Create a new project
 const createProject = async (req, res) => {
     try {
@@ -20,6 +21,17 @@ const getProjects = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+const getProjectById = async(req,res)=>{
+    try {
+        const {id} = req.params;
+        console.log("Id", id);
+        
+    } catch (error) {
+        console.error("Error in fetching project:", error.message);
+        res.status(500).json({ message: "Server error", error: error.message });
+    }
+}
 
 // Get a single project by slug
 const getProjectBySlug = async (req, res) => {

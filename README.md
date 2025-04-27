@@ -1,5 +1,5 @@
 
-# jobfindingai
+# JobFindingAI
 
 ![jobfindingai Logo](https://example.com/logo.png) <!-- Replace with actual logo URL -->
 

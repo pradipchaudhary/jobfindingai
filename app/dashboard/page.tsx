@@ -1,5 +1,4 @@
-
-
+export default function Dashboard() {
   return (
     <div className="p-4">
       <h2 className="text-xl font-semibold">Your Applied Jobs</h2>

@@ -1,9 +1,9 @@
-// app/dashboard/page.tsx or wherever your route file is
-import mongooseConnection from "@/lib/mongoose"
+
+import { connectToDatabase } from "@/lib/db";
 import { Job } from "@/models/Job"
 
 export default async function Dashboard() {
-  await mongooseConnection // Ensure DB is connected
+  await connectToDatabase() // Ensure DB is connected
 
   const jobs = await Job.find().lean() // Fetch jobs from MongoDB
 

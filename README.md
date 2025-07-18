@@ -1,8 +1,15 @@
 # 💼 JobFindingAI
 
+<<<<<<< HEAD
+![JobFindingAI Logo](public/logo.jpg)
+
+
+An AI-powered job search and application automation tool that helps candidates discover and apply for relevant job opportunities effortlessly.
+=======
 **JobFindingAI** is an AI-powered job search and application automation platform that helps candidates **discover**, **optimize**, and **apply** for the most relevant job opportunities — all in one place.
 
 ![JobFindingAI Banner](./public/banner.png)
+>>>>>>> 7a022f0585164625d516a8f94331b42d826b9459
 
 ---
 

@@ -1,23 +1,12 @@
-import mongoose, { Connection } from "mongoose";
+import mongoose, { Connection } from 'mongoose';
 
 const MONGODB_URI = process.env.MONGODB_URI!;
 
 if (!MONGODB_URI) {
-  throw new Error("Please define MONGODB_URI in your environment variables.");
+  throw new Error('Please define the MONGODB_URI environment variable');
 }
 
-// Define a global interface to extend NodeJS.Global
-interface MongooseGlobal {
-  conn: Connection | null;
-  promise: Promise<Connection> | null;
-}
-
-// Extend the global object in Node.js with a mongoose property
-declare global {
-  var mongoose: MongooseGlobal | undefined;
-}
-
-// Use the global object to cache the connection,
+// Setup global cache
 let cached = global.mongoose;
 
 if (!cached) {
@@ -25,25 +14,19 @@ if (!cached) {
 }
 
 export async function connectToDatabase(): Promise<Connection> {
-  if (cached.conn) {
-    return cached.conn;
-  }
+  if (cached.conn) return cached.conn;
 
   if (!cached.promise) {
-    const opts = {
-      bufferCommands: true,
-      maxPoolSize: 10,
-    };
-
-    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongooseInstance) => mongooseInstance.connection);
+    cached.promise = mongoose.connect(MONGODB_URI).then((mongoose) => mongoose.connection);
   }
 
-  try {
-    cached.conn = await cached.promise;
-  } catch (error) {
-    cached.promise = null;
-    throw error;
-  }
-
+  cached.conn = await cached.promise;
   return cached.conn;
+}
+
+export async function disconnectFromDatabase(): Promise<void> {
+  if (cached.conn) {
+    await cached.conn.close();
+    cached.conn = null;
+  }
 }

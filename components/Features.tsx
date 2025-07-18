@@ -25,15 +25,19 @@ const features = [
 
 export default function Features() {
     return (
-        <section className="max-w-7xl mx-auto py-24 px-6 lg:px-12 bg-gray-50">
+        <section className="max-w-7xl mx-auto py-24 px-6 lg:px-12 ">
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
                 {features.map((feat, idx) => (
                     <div
                         key={idx}
-                        className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all"
+                        className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm transition-all duration-200 hover:shadow-lg hover:border-indigo-200 hover:scale-[1.015] cursor-pointer"
                     >
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2">{feat.title}</h3>
-                        <p className="text-gray-600 text-sm leading-relaxed">{feat.desc}</p>
+                        <h3 className="text-lg font-semibold text-gray-900 mb-2 hover:text-indigo-600 transition-colors duration-200">
+                            {feat.title}
+                        </h3>
+                        <p className="text-gray-600 text-sm leading-relaxed">
+                            {feat.desc}
+                        </p>
                     </div>
                 ))}
             </div>

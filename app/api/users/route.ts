@@ -27,3 +27,26 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ success: false, error: "Failed to create user" }, { status: 500 });
     }
 }
+
+export async function GET(request: NextRequest) {
+    try {
+        // Connect to MongoDB
+        await connectToDatabase();
+
+        // Fetch all users from MongoDB
+        const users = await User.find({}) // Remove __v field (optional)
+
+        // Return success response
+        return NextResponse.json(
+            { success: true, users },
+            { status: 200 }
+        );
+    } catch (error) {
+        console.error('Error fetching users:', error);
+
+        return NextResponse.json(
+            { success: false, error: 'Failed to fetch users' },
+            { status: 500 }
+        );
+    }
+}

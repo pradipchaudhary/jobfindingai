@@ -1,33 +1,57 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
 
-export async function scrapeAllJobs() {
-  const allJobs: any[] = [];
+export interface Job {
+  title: string;
+  company: string;
+  location: string;
+  link: string;
+  logo?: string;
+}
 
-  // --- JobSniper ---
+export async function scrapeAllJobs(): Promise<Job[]> {
+  const jobs: Job[] = [];
+
   try {
-    const sniperRes = await axios.get("https://www.jobssniper.com/");
-    const $ = cheerio.load(sniperRes.data);
+    const response = await axios.get("https://www.jobssniper.com/");
+    const $ = cheerio.load(response.data);
 
-    console.log("Data:", $)
+    $(".jobcard_home").each((_, el) => {
+      const company = $(el)
+        .find('[data-baseweb="typo-labelsmall"]')
+        .text()
+        .trim();
 
-    $(".job-title").each((_, el) => {
-      const title = $(el).text().trim();
-      const href = $(el).find("a").attr("href");
+      const logoRaw = $(el).find("img").last().attr("src");
+      const logo = logoRaw
+        ? logoRaw.startsWith("http")
+          ? logoRaw
+          : `https://www.jobssniper.com${logoRaw}`
+        : undefined;
 
-      if (title && href) {
-        const link = "https://www.jobssniper.com" + href;
-        allJobs.push({
-          title,
-          company: "JobsSniper",
-          location: "Nepal",
-          link,
+      $(el)
+        .find("ul li a")
+        .each((_, jobAnchor) => {
+          const title = $(jobAnchor).text().trim();
+          const href = $(jobAnchor).attr("href");
+          const link = href?.startsWith("http")
+            ? href
+            : `https://www.jobssniper.com${href}`;
+
+          if (title && link) {
+            jobs.push({
+              title,
+              company,
+              location: "Nepal",
+              link,
+              logo,
+            });
+          }
         });
-      }
     });
-  } catch (err: any) {
-    console.error("JobSniper scraping error:", err?.message || err);
+  } catch (error: any) {
+    console.error("❌ Failed to scrape JobSniper:", error?.message || error);
   }
 
-  return allJobs;
+  return jobs;
 }

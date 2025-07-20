@@ -4,6 +4,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <>
+
       <div className="h-full w-full flex justify-center items-center flex-col py-10">
         <Image src="/logo.jpg" width={200} height={300} alt="Logo, JobFindingAI" />
       </div>

@@ -21,12 +21,16 @@ const features = [
         title: 'Real-time Alerts',
         desc: 'Never miss an opening—receive instant notifications for perfect-match roles.',
     },
+    {
+        title: 'Interview Prep',
+        desc: 'AI-driven mock interviews and feedback to help you ace your next interview.',
+    }
 ]
 
 export default function Features() {
     return (
-        <section className="max-w-7xl mx-auto py-24 px-6 lg:px-12 ">
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        <section className="max-w-4xl mx-auto py-24 px-6 lg:px-12 ">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-10">
                 {features.map((feat, idx) => (
                     <div
                         key={idx}

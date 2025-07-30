@@ -1,0 +1,41 @@
+{
+    "username": "pradipchaudhary",
+    "email": "pradip@example.com",
+    "password": "Test@12345",
+    "avatar": "https://res.cloudinary.com/demo/image/upload/v1690012345/avatar.png",
+    "resume": "https://res.cloudinary.com/demo/raw/upload/v1690012345/pradip_resume.pdf",
+    "skills": [
+        "JavaScript",
+        "React",
+        "Node.js",
+        "MongoDB"
+    ],
+    "experience": "2+ years as a full stack developer",
+    "education": "B.Sc. in Computer Science",
+    "preferences": {
+        "location": "Kathmandu",
+        "jobType": "remote",
+        "categories": [
+            "Frontend Developer",
+            "Full Stack Developer"
+        ],
+        "salaryRange": {
+            "min": 40000,
+            "max": 80000
+        }
+    },
+    "matchedJobs": [
+        {
+            "jobId": "64d889afdf59e67b0c3b1234",
+            "matchedAt": "2025-07-23T10:00:00.000Z",
+            "status": "matched"
+        },
+        {
+            "jobId": "64d889afdf59e67b0c3b4567",
+            "matchedAt": "2025-07-24T08:30:00.000Z",
+            "status": "applied"
+        }
+    ],
+    "isVerified": true,
+    "profileCompleted": true
+}

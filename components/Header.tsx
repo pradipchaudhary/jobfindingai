@@ -8,10 +8,10 @@ export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <header className="bg-white text-gray-900 ">
+        <header className="bg-white text-gray-900">
             <div className="max-w-4xl mx-auto px-4 py-6 flex items-center justify-between">
                 {/* Logo */}
-                <Link href="/" className="text-xl font-bold text-blue-600 tracking-tight">
+                <Link href="/" className="text-xl font-bold text-black tracking-tight">
                     JobFindingAI
                 </Link>
 
@@ -27,8 +27,8 @@ export default function Header() {
                         Login
                     </Link>
                     <Link
-                        href="/signup"
-                        className="bg-blue-600 text-white px-4 py-2 rounded-md font-semibold hover:bg-blue-700 transition-colors"
+                        href="/register"
+                        className="bg-black text-white px-4 py-2 rounded-md font-semibold hover:bg-gray-900 transition-colors"
                     >
                         Signup
                     </Link>
@@ -58,7 +58,7 @@ export default function Header() {
                     </Link>
                     <Link
                         href="/signup"
-                        className="block bg-blue-600 text-white px-4 py-2 rounded-md font-semibold hover:bg-blue-700 transition-colors"
+                        className="block bg-black text-white px-4 py-2 rounded-md font-semibold hover:bg-gray-900 transition-colors"
                     >
                         Signup
                     </Link>

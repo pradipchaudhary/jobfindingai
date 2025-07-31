@@ -3,12 +3,14 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { connectToDatabase } from "./db";
 import User from "@/models/User";
 import bcrypt from "bcryptjs";
+import { use } from "react";
 
 export const authOptions: NextAuthOptions = {
     providers: [
         CredentialsProvider({
             name: "Credentials",
             credentials: {
+                username: { label: "Username", type: "text" },
                 email: { label: "Email", type: "text" },
                 password: { label: "Password", type: "passsword" },
             },
@@ -27,7 +29,7 @@ export const authOptions: NextAuthOptions = {
 
                     const isValid = await bcrypt.compare(
                         credentials.password,
-                        user.passsword
+                        user.password
                     );
 
                     if (!isValid) {

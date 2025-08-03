@@ -13,8 +13,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     ];
 
     return (
-        <div className="min-h-full py-8 px-4">
-            <div className="max-w-4xl mx-auto bg-white flex overflow-hidden h-[78vh] ">
+        <div className="min-h-full py-1 px-4">
+            <div className="max-w-4xl mx-auto bg-white flex overflow-hidden h-full ">
                 {/* Sidebar */}
                 <aside className="w-56 hidden md:flex flex-col border-r border-gray-200 px-5 py-6">
                     <h2 className="text-xl font-bold text-gray-800 mb-8 border-b border-gray-50">Dashboard</h2>

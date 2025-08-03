@@ -22,6 +22,8 @@ export default function ProfilePage() {
         );
     }
 
+    const user = session?.user;
+
     return (
         <div className="max-w-4xl mx-auto mt-12 px-6">
             <div className="bg-white border border-gray-200 rounded-xl shadow-md p-8">
@@ -29,15 +31,15 @@ export default function ProfilePage() {
 
                 <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
                     <img
-                        src={session?.user?.image || '/default-avatar.png'}
+                        src={user?.image || '/default-avatar.png'}
                         alt="User Avatar"
                         className="w-24 h-24 rounded-full object-cover border border-gray-300"
                     />
                     <div>
                         <h2 className="text-2xl font-medium text-gray-800">
-                            {session?.user?.name || 'Anonymous User'}
+                            {user?.name || 'Anonymous User'}
                         </h2>
-                        <p className="text-gray-500">{session?.user?.email}</p>
+                        <p className="text-gray-500">{user?.email || 'No email provided'}</p>
                     </div>
                 </div>
 
@@ -46,16 +48,13 @@ export default function ProfilePage() {
                     <div className="space-y-3 text-gray-700 text-sm">
                         <div>
                             <span className="font-medium">Name:</span>{' '}
-                            {session?.user?.name || 'N/A'}
+                            {user?.name || 'N/A'}
                         </div>
                         <div>
                             <span className="font-medium">Email:</span>{' '}
-                            {session?.user?.email || 'N/A'}
+                            {user?.email || 'N/A'}
                         </div>
-                        <div>
-                            <span className="font-medium">Provider:</span>{' '}
-                            {session?.user?.provider || 'Credentials / Google'}
-                        </div>
+
                     </div>
                 </div>
             </div>

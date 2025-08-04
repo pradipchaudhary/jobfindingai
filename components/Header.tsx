@@ -54,13 +54,13 @@ export default function Header() {
                         <span className="text-gray-500">Loading...</span>
                     ) : session ? (
                         <div className="relative" ref={dropdownRef}>
+                            {/* Dropdown Toggle Button: Only Avatar + Arrow */}
                             <button
                                 onClick={() => setDropdownOpen(!dropdownOpen)}
-                                className="flex items-center gap-2 rounded-md px-3 py-1 hover:bg-gray-100 transition"
+                                className="flex items-center gap-1 rounded-md px-3 py-1 hover:bg-gray-100 transition"
                                 aria-haspopup="true"
                                 aria-expanded={dropdownOpen}
                             >
-                                {/* Avatar */}
                                 {session.user?.image ? (
                                     <img
                                         src={session.user.image}
@@ -72,18 +72,26 @@ export default function Header() {
                                         {getInitials(session.user?.name || session.user?.email || '')}
                                     </div>
                                 )}
-
-                                {/* Username */}
-                                <span className="text-gray-700 whitespace-nowrap">
-                                    {session.user?.name || session.user?.email}
-                                </span>
-
-                                <ChevronDown className={`w-4 h-4 text-gray-700 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
+                                <ChevronDown
+                                    className={`w-4 h-4 text-gray-700 transition-transform ${dropdownOpen ? 'rotate-180' : ''
+                                        }`}
+                                />
                             </button>
 
-                            {/* Dropdown menu */}
+                            {/* Dropdown Menu */}
                             {dropdownOpen && (
-                                <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-md shadow-lg z-50">
+                                <div className="absolute right-0 mt-2 w-56 bg-white border border-gray-200 rounded-md shadow-lg z-50">
+                                    {/* User Info Header */}
+                                    <div className="px-4 py-3 border-b border-gray-200">
+                                        <p className="text-gray-900 font-semibold truncate">
+                                            {session.user?.name || 'No Name'}
+                                        </p>
+                                        <p className="text-gray-500 text-sm truncate">
+                                            {session.user?.email || 'No Email'}
+                                        </p>
+                                    </div>
+
+                                    {/* Menu Items */}
                                     <Link
                                         href="/profile"
                                         className="block px-4 py-2 text-gray-700 hover:bg-gray-100"

@@ -3,10 +3,11 @@
 import Image from 'next/image';
 
 const sponsorLogos = [
-    '/logos/image.webp',
+    '/logos/jobaxle.svg',
     '/logos/intern-sathi.png',
-    '/logos/jn-logo.png',
     '/logos/mj_logo.svg',
+    '/logos/kantipurjob.png',
+    '/logos/kumarijob.svg'
     // Add more logos as needed
 ];
 

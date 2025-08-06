@@ -1,12 +1,4 @@
-Great! You're looking to create a **Full-Stack SaaS App** using:
 
-* **Next.js (App Router)**
-* **TypeScript**
-* **MongoDB**
-* **Prisma (as ORM)**
-* Hosted at: [`https://github.com/pradipchaudhary/jobfindingai`](https://github.com/pradipchaudhary/jobfindingai)
-
----
 
 ### ✅ PROJECT NAME: `JobFindingAI – Full Stack SaaS Platform`
 

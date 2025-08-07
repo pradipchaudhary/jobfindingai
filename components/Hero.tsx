@@ -14,10 +14,11 @@ export default function Hero() {
                 {/* Logo */}
                 <div className="mb-10">
                     <Image
-                        src="/logo.jpg"
+                        src="/logo.gif"
                         width={180}
                         height={270}
                         alt="Logo, JobFindingAI"
+                        priority
                     />
                 </div>
 

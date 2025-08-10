@@ -2,9 +2,9 @@ import Link from "next/link";
 
 export default function Hero() {
     return (
-        <div className="bg-white min-h-screen">
+        <div className="bg-white">
             {/* Content */}
-            <div className="flex flex-col justify-center items-center px-6 text-center py-32 min-h-screen max-w-4xl mx-auto">
+            <div className="flex flex-col justify-center items-center px-6 text-center py-32  max-w-4xl mx-auto">
                 {/* Main Heading */}
                 <h1 className="text-5xl sm:text-6xl font-bold text-gray-900 mb-8 leading-tight">
                     Find Your Dream Job

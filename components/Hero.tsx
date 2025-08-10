@@ -9,7 +9,7 @@ export default function Hero() {
             </div>
 
             {/* Content */}
-            <div className="relative z-10 min-h-screen flex flex-col justify-center items-center px-6 text-center py-24">
+            <div className="relative z-10 flex flex-col justify-center items-center px-6 text-center py-24">
                 {/* Main Heading */}
                 <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 max-w-4xl mb-6">
                     Find Your Dream Job with AI

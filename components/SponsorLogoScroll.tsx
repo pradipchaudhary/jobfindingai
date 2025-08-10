@@ -11,9 +11,9 @@ const sponsorLogos = [
 ];
 
 export default function SponsorLogoScroll() {
-    const [imageErrors, setImageErrors] = useState(new Set());
+    const [imageErrors, setImageErrors] = useState<Set<number>>(new Set());
 
-    const handleImageError = (index) => {
+    const handleImageError = (index: number): void => {
         setImageErrors(prev => new Set(prev).add(index));
     };
 

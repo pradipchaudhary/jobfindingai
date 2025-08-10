@@ -37,86 +37,95 @@ export default function SupportPage() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto px-6 py-12">
-      <header className="mb-8 text-center">
-        <h1 className="text-3xl font-bold tracking-tight">Support</h1>
-        <p className="mt-2 text-sm text-gray-500">
-          Need help? Fill out the form below or contact us directly.
-        </p>
-      </header>
+    <div className="min-h-screen bg-white">
+      <div className="max-w-lg mx-auto px-6 py-16">
+        {/* Header */}
+        <div className="mb-12 text-center">
+          <h1 className="text-2xl font-semibold text-gray-900 mb-2">Support</h1>
+          <p className="text-gray-600">Get in touch with our team</p>
+        </div>
 
-      <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
-        <form onSubmit={handleSubmit} className="space-y-5">
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Name</label>
+            <label className="block text-sm font-medium text-gray-900 mb-2">
+              Name
+            </label>
             <input
               name="name"
               value={form.name}
               onChange={handleChange}
               required
-              className="mt-1 w-full rounded-lg border border-gray-300 p-3 text-sm shadow-sm focus:border-black focus:ring-1 focus:ring-black"
-              placeholder="Your full name"
+              className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-gray-900 transition-colors"
+              placeholder="Your name"
             />
           </div>
+
           <div>
-            <label className="block text-sm font-medium text-gray-700">Email</label>
+            <label className="block text-sm font-medium text-gray-900 mb-2">
+              Email
+            </label>
             <input
               name="email"
               type="email"
               value={form.email}
               onChange={handleChange}
               required
-              className="mt-1 w-full rounded-lg border border-gray-300 p-3 text-sm shadow-sm focus:border-black focus:ring-1 focus:ring-black"
-              placeholder="you@example.com"
+              className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-gray-900 transition-colors"
+              placeholder="your@email.com"
             />
           </div>
+
           <div>
-            <label className="block text-sm font-medium text-gray-700">Subject</label>
+            <label className="block text-sm font-medium text-gray-900 mb-2">
+              Subject
+            </label>
             <input
               name="subject"
               value={form.subject}
               onChange={handleChange}
               required
-              className="mt-1 w-full rounded-lg border border-gray-300 p-3 text-sm shadow-sm focus:border-black focus:ring-1 focus:ring-black"
-              placeholder="Bug report / Feature request / Question"
+              className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-gray-900 transition-colors"
+              placeholder="How can we help?"
             />
           </div>
+
           <div>
-            <label className="block text-sm font-medium text-gray-700">Message</label>
+            <label className="block text-sm font-medium text-gray-900 mb-2">
+              Message
+            </label>
             <textarea
               name="message"
               value={form.message}
               onChange={handleChange}
               required
-              rows={6}
-              className="mt-1 w-full rounded-lg border border-gray-300 p-3 text-sm shadow-sm focus:border-black focus:ring-1 focus:ring-black"
-              placeholder="Describe your issue or request"
+              rows={5}
+              className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-gray-900 transition-colors resize-none"
+              placeholder="Tell us more about your request..."
             />
           </div>
-          <div className="flex items-center gap-3">
+
+          {/* Buttons */}
+          <div className="pt-4">
             <button
               type="submit"
               disabled={status === "sending"}
-              className="inline-flex items-center px-5 py-2.5 rounded-lg bg-black text-white font-medium shadow-sm hover:bg-gray-800 disabled:opacity-60 transition-colors"
+              className="w-full px-4 py-3 bg-black text-white rounded-md hover:bg-gray-900 disabled:opacity-50 transition-colors font-medium"
             >
               {status === "sending" ? "Sending..." : "Send Message"}
             </button>
-            <button
-              type="button"
-              onClick={() => {
-                setForm({ name: "", email: "", subject: "", message: "" });
-                setStatus(null);
-              }}
-              className="inline-flex items-center px-4 py-2.5 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors"
-            >
-              Reset
-            </button>
           </div>
+
+          {/* Status Messages */}
           {status === "success" && (
-            <p className="text-sm text-green-600">✅ Message sent — we'll get back to you soon.</p>
+            <div className="text-center text-green-600 text-sm">
+              Message sent successfully. We'll get back to you soon.
+            </div>
           )}
           {status === "error" && (
-            <p className="text-sm text-red-600">❌ Something went wrong. Try again later.</p>
+            <div className="text-center text-red-600 text-sm">
+              Something went wrong. Please try again.
+            </div>
           )}
         </form>
       </div>

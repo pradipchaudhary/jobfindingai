@@ -2,9 +2,20 @@ import Link from "next/link";
 
 export default function Hero() {
     return (
-        <div className="bg-white">
+        <div className="relative bg-white">
+            {/* Background Gradient */}
+            <div aria-hidden="true" className="absolute inset-0 -z-10">
+                <div
+                    style={{
+                        background:
+                            "radial-gradient(ellipse at center, rgba(244,63,94,0.08), transparent 70%)",
+                    }}
+                    className="w-full h-full"
+                ></div>
+            </div>
+
             {/* Content */}
-            <div className="flex flex-col justify-center items-center px-6 text-center py-32  max-w-4xl mx-auto">
+            <div className="flex flex-col justify-center items-center px-6 text-center py-32 max-w-4xl mx-auto">
                 {/* Main Heading */}
                 <h1 className="text-5xl sm:text-6xl font-bold text-gray-900 mb-8 leading-tight">
                     Find Your Dream Job
@@ -14,7 +25,7 @@ export default function Hero() {
 
                 {/* Subheading */}
                 <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-12 leading-relaxed">
-                    Intelligent job matching and automated applications. 
+                    Intelligent job matching and automated applications.
                     Let AI do the heavy lifting while you focus on landing your next role.
                 </p>
 

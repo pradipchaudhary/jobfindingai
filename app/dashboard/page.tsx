@@ -8,12 +8,7 @@ export default function DashboardPage() {
             </h1>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <DashboardCard
-                    title="AI Job Suggestions"
-                    description="Get personalized job recommendations powered by AI."
-                    action="View Suggestions"
-                />
-
+              
                 <DashboardCard
                     title="Application Stats"
                     customContent={
@@ -31,12 +26,7 @@ export default function DashboardPage() {
                     description="Your resume is 85% complete. Improve it for better matches."
                     action="Update Resume"
                 />
-
-                <DashboardCard
-                    title="Saved Jobs"
-                    description="You’ve saved 5 jobs to review later."
-                    action="View Saved Jobs"
-                />
+          
 
                 <DashboardCard
                     title="Profile Completion"

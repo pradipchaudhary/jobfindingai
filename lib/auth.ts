@@ -1,74 +1,67 @@
-import { NextAuthOptions } from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { connectToDatabase } from "./db";
-import User from "@/models/User";
+import { connectToDatabase } from "@/lib/db";  // adjust import path as needed
+import User from "@/models/User";              // adjust import path as needed
 import bcrypt from "bcryptjs";
-import { use } from "react";
 
 export const authOptions: NextAuthOptions = {
-    providers: [
-        CredentialsProvider({
-            name: "Credentials",
-            credentials: {
-                username: { label: "Username", type: "text" },
-                email: { label: "Email", type: "text" },
-                password: { label: "Password", type: "passsword" },
-            },
-            async authorize(credentials) {
-                if (!credentials?.email || !credentials?.password) {
-                    throw new Error("Missing email or passsword");
-                }
+  providers: [
+    CredentialsProvider({
+      name: "Credentials",
+      credentials: {
+        email: { label: "Email", type: "text" },
+        password: { label: "Password", type: "password" },
+      },
+      async authorize(credentials) {
+        if (!credentials?.email || !credentials?.password) {
+          throw new Error("Missing email or password");
+        }
 
-                try {
-                    await connectToDatabase();
-                    const user = await User.findOne({ email: credentials.email });
+        await connectToDatabase();
 
-                    if (!user) {
-                        throw new Error("No user found with this");
-                    }
+        const user = await User.findOne({ email: credentials.email });
+        if (!user) {
+          throw new Error("No user found with this email");
+        }
 
-                    const isValid = await bcrypt.compare(
-                        credentials.password,
-                        user.password
-                    );
+        const isValid = await bcrypt.compare(credentials.password, user.password);
+        if (!isValid) {
+          throw new Error("Invalid password");
+        }
 
-                    if (!isValid) {
-                        throw new Error("invalid password");
-                    }
-
-                    return {
-                        id: user._id.toString(),
-                        username: user.username,
-                        email: user.email,
-                    };
-                } catch (error) {
-                    console.error("Auth error: ", error);
-                    throw error;
-                }
-            },
-        }),
-    ],
-    callbacks: {
-        async jwt({ token, user }) {
-            if (user) {
-                token.id = user.id;
-            }
-            return token;
-        },
-        async session({ session, token }) {
-            if (session.user) {
-                session.user.id = token.id as string;
-            }
-            return session;
-        },
+        return {
+          id: user._id.toString(),
+          username: user.username,
+          email: user.email,
+        };
+      },
+    }),
+  ],
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+        token.username = user.username;
+      }
+      return token;
     },
-    pages: {
-        signIn: "/login",
-        error: "/login",
+    async session({ session, token }) {
+      if (session.user) {
+        session.user.id = token.id as string;
+        session.user.username = token.username as string;
+      }
+      return session;
     },
-    session: {
-        strategy: "jwt",
-        maxAge: 30 * 24 * 60 * 60,
-    },
-    secret: process.env.NEXTAUTH_SECRET,
+  },
+  pages: {
+    signIn: "/login",
+    error: "/login",
+  },
+  session: {
+    strategy: "jwt",
+    maxAge: 30 * 24 * 60 * 60,
+  },
+  secret: process.env.NEXTAUTH_SECRET,
 };
+
+export default NextAuth(authOptions);

@@ -21,18 +21,25 @@ export default function SponsorLogoScroll() {
     return (
         <div className="py-10">
             <div className="max-w-4xl mx-auto overflow-hidden">
-                <div className="flex animate-scroll space-x-12" style={{
-                    width: `${sponsorLogos.length * 2 * 144}px`, // 144px = 120px width + 48px gap
-                    animation: 'scroll 20s linear infinite'
-                }}>
+                <div className="scroll-container flex space-x-12"
+                    style={{
+                        width: `${sponsorLogos.length * 2 * 144}px`, // 144px = 120px width + 48px gap
+                        animation: 'scroll 20s linear infinite'
+                    }}
+                >
                     {sponsorLogos.concat(sponsorLogos).map((logo, index) => (
-                        <div key={index} className="flex-shrink-0">
+                        <div
+                            key={index}
+                            className="flex-shrink-0 group"
+                        >
                             <Image
                                 src={logo}
                                 alt="Sponsor Logo"
                                 width={120}
                                 height={60}
-                                className="object-contain  transition duration-300"
+                                style={{ height: 'auto' }}
+                                className="object-contain transition duration-300"
+                                onError={() => handleImageError(index)}
                             />
                         </div>
                     ))}
@@ -48,12 +55,13 @@ export default function SponsorLogoScroll() {
                         transform: translateX(-${sponsorLogos.length * 144}px);
                     }
                 }
-                
-                .animate-scroll {
+
+                .scroll-container {
                     animation: scroll 20s linear infinite;
                 }
 
-                .animate-scroll:hover {
+                /* Pause animation when hovering any image */
+                .scroll-container:hover {
                     animation-play-state: paused;
                 }
             `}</style>

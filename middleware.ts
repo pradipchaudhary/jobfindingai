@@ -9,7 +9,7 @@ export default withAuth(
         callbacks: {
             authorized({ req, token }) {
                 const { pathname } = req.nextUrl;
-                
+
                 // Always allow these paths without authentication
                 if (
                     pathname.startsWith("/api/auth") ||
@@ -29,7 +29,7 @@ export default withAuth(
                 ) {
                     return true;
                 }
-                
+
                 // For all other paths, require authentication
                 return !!token;
             },

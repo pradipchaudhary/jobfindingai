@@ -17,6 +17,9 @@ export default withAuth(
                     pathname === "/register" ||
                     pathname === "/support" ||
                     pathname === "/" ||
+                    pathname === "/privacy-policy" ||
+                    pathname === "/terms" ||
+                    pathname === "/support" ||
                     // Allow all static assets
                     pathname.startsWith("/_next/") ||
                     pathname.startsWith("/public/") ||

@@ -125,7 +125,7 @@ export default function Header() {
                             </Link>
                             <Link
                                 href="/register"
-                                className="bg-black text-white px-4 py-2 rounded-md font-semibold hover:bg-gray-900 transition-colors"
+                                className="bg-black text-white px-4 py-2 rounded-md font-medium hover:bg-gray-900 transition-colors"
                             >
                                 Signup
                             </Link>

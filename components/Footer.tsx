@@ -8,9 +8,9 @@ export default function Footer() {
       <div className="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-6">
         <p>© {year} JobFindingAI</p>
         <div className="flex gap-4">
-          <a href="#" className="hover:text-gray-800 transition-colors">Privacy</a>
-          <a href="#" className="hover:text-gray-800 transition-colors">Terms</a>
-          <a href="#" className="hover:text-gray-800 transition-colors">Support</a>
+          <a href="/privacy-policy" className="hover:text-gray-800 transition-colors">Privacy</a>
+          <a href="/terms" className="hover:text-gray-800 transition-colors">Terms</a>
+          <a href="/support" className="hover:text-gray-800 transition-colors">Support</a>
         </div>
       </div>
     </footer>
